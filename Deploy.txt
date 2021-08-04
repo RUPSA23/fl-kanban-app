@@ -1,0 +1,37 @@
+steps:
+1. All the App secret and API_Keys will be stored in environment file
+2. Create a Heroku account
+3. Create A New App 
+
+...........Optional.........................
+4. Download heroku git for your OS
+...........Optional END.........................
+
+5. Open git bash in your project folder
+6. type --> heroku login
+
+...........Optional.........................
+7. init git in that folder --> git init
+8. remote -a "app name"
+...........Optional END.....................
+
+9. Modify package.json ***remove nodemon with node -->
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js"
+  },
+	
+  "engines": {
+    "node": "15.3"
+  },
+
+10. create a file named as Procfile(without any extension) and write: web: node app.js
+11. in app.js modify --> app.listen(process.env.PORT || 3000);
+12. git add .
+13. git commit -m "message"
+14. git push heroku master
+15. Goto Heroku Portal --> Settings --> Config Vars --> Add your Key values
+16. Goto  --> Overview --> More --> Resart all dynos
+17. Open App
