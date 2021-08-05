@@ -27,7 +27,7 @@
                 </div>
                 <% if (resource.status == "approved") { %>
                 <div class="card__content">
-                    <p class="product__description"><b><%= resource.status %> to <br><%= resource.developerAssigned.name %></b></p>
+                    <p class="product__description"><b>Developed By <br><%= resource.developerAssigned.name %></b></p>
                 </div>
                 <% } %>
                 <% if (resource.status != "approved") { %>
