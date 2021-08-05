@@ -25,6 +25,11 @@
                         <%= resource.description %>
                     </p>
                 </div>
+                <% if (resource.status == "approved") { %>
+                <div class="card__content">
+                    <p class="product__description"><b><%= resource.status %> to <br><%= resource.developerAssigned.name %></b></p>
+                </div>
+                <% } %>
                 <% if (resource.status != "approved") { %>
                 <div class="card__actions">
                     <a href="/update-resource/<%= resource._id %>?edit=true" class="btn">Edit</a>
@@ -47,7 +52,7 @@
             <% } %>
         </div>
         <% } else { %>
-        <h1>No Products Found!</h1>
+        <h1>No Kanban Found!</h1>
         <% } %>
     </main>
     <%- include('../includes/end.ejs') %>

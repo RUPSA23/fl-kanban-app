@@ -16,9 +16,15 @@
                 <div class="card__content">
                     <p class="product__description"><%= resource.description %></p>
                 </div>
-                <div class="card__content">
-                    <p class="product__description"><b><%= resource.status %></b></p>
-                </div>
+                <% if (resource.status== "pending") { %>
+                    <div class="card__content">
+                        <p class="product__description"><b><%= resource.status %></b></p>
+                    </div>
+                <% } else { %>
+                    <div class="card__content">
+                        <p class="product__description"><b><%= resource.status %> to <br><%= resource.developerAssigned.name %></b></p>
+                    </div>
+                <% } %>
                 <% if (isAuthenticated && user.usertype == '2') { %>
                 <div class="card__actions">
                     <% if (resource.status == "pending") { %>

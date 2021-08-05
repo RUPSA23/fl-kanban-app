@@ -53,9 +53,13 @@ exports.postaddResource = (req, res, next) => {
     })
 }
 
-exports.getResources = (req, res, next) => {
-  Resource_z.find({ status: { $ne: "approved" } })
+exports.getResources = async(req, res, next) => {
+  // const resources1 = await Resource_z.find({ status: { $ne: "approved"} }).populate('developerAssigned');
+  // console.log(resources1);
+
+  Resource_z.find({ status: { $ne: "approved"} }).populate('developerAssigned')
     .then(resources => {
+      console.log(resources);
       res.render('kanban/allkanban', {
         allResources: resources,
         pageTitle: 'All Kanbans',
@@ -192,7 +196,7 @@ exports.getAdminHistory = (req, res, next) => {
   Resource_z.find({
       userId: req.user._id,
       status: "approved"
-    })
+    }).populate('developerAssigned')
     .then(re => {
       res.render('kanban/adminkanban', {
         AllAdminResources: re,

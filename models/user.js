@@ -8,6 +8,10 @@ const ZuserSchema = new Schema({
     type: String,
     required: true
   },
+  name: {
+    type: String,
+    required: true
+  },
   usertype: {
     type: String,
     required: true
@@ -37,7 +41,6 @@ ZuserSchema.methods.addkanbanIds = function (kanban) {
   this.kanbans = kanbansarray;
   this.save();
 }
-
 
 module.exports = mongoose.model('User', ZuserSchema);
 

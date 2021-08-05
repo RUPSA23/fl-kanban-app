@@ -39,22 +39,22 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Kanban</a>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Tasks</a>
             </li>
 
             <% if (isAuthenticated && user.usertype == '2') { %>
             <li class="main-header__item">
-                <a class="<%= path === '/myRecords' ? 'active' : '' %>" href="/myRecords">My Records</a>
+                <a class="<%= path === '/myRecords' ? 'active' : '' %>" href="/myRecords">My Tasks</a>
             </li>
             <% } %>
 
             <% if (isAuthenticated && user.usertype == '1') { %>
             <li class="main-header__item">
-                <a class="<%= path === '/addResource' ? 'active' : '' %>" href="/addResource">Add Kanban
+                <a class="<%= path === '/addResource' ? 'active' : '' %>" href="/addResource">Add Task
                 </a>
             </li>
             <li class="main-header__item">
-                <a class="<%= path === '/Admin-resource' ? 'active' : '' %>" href="/admin/resources">Kanban Admin
+                <a class="<%= path === '/Admin-resource' ? 'active' : '' %>" href="/admin/resources">Task Admin
                 </a>
             </li>
             <li class="main-header__item">

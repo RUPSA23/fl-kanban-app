@@ -40,6 +40,7 @@ exports.getSignup = (req, res, next) => {
     errorMessage: message,
     oldInput: {
       email: '',
+      name: '',
       password: '',
       confirmPassword: ''
     },
@@ -96,9 +97,6 @@ exports.postLogin = (req, res, next) => {
               else {
                 res.redirect('/');
               }
-               // ui for admin/manager
-              // else if user.usertype===2
-              // res.redirect('/developer') // ui for developer
             });
           }
           return res.status(422).render('auth/login', {
@@ -123,11 +121,12 @@ exports.postLogin = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
   console.log(req.body);
   const email = req.body.email;
+  const name = req.body.name;
   const usertype = req.body.usertype;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
 
-  console.log(email, usertype, password, confirmPassword);
+  // console.log(email, usertype, password, confirmPassword);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -138,6 +137,7 @@ exports.postSignup = (req, res, next) => {
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email: email,
+        name: name,
         password: password,
         usertype: usertype,
         confirmPassword: confirmPassword
@@ -157,6 +157,7 @@ exports.postSignup = (req, res, next) => {
         .then(hashedPassword => {
           const user = new User({
             email: email,
+            name: name,
             password: hashedPassword,
             usertype: usertype,
             kanbans: [] 
