@@ -54,12 +54,8 @@ exports.postaddResource = (req, res, next) => {
 }
 
 exports.getResources = async(req, res, next) => {
-  // const resources1 = await Resource_z.find({ status: { $ne: "approved"} }).populate('developerAssigned');
-  // console.log(resources1);
-
   Resource_z.find({ status: { $ne: "approved"} }).populate('developerAssigned')
     .then(resources => {
-      console.log(resources);
       res.render('kanban/allkanban', {
         allResources: resources,
         pageTitle: 'All Kanbans',
